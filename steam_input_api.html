@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Steam Input API plugin</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/prism.css">
+    <script src="scripts/prism.js"></script>
+</head>
+<body>
+    <div class="content">
+        <!-- Header -->
+        <header>
+            <div class = "container">
+                <h1 class="logo">Lasse Broekstra</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html#about">About Me</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    <section class="about-section" id="overview">
+        <div class="banner"><img src="assets/Input_API.webp" alt="Image of a steam controller config screen showing off correct input names"></div>
+        <div class="container">
+            <h2>Project Overview</h2>
+            <p>Steam Input API Plugin for Unreal Engine is a drop‑in replacement for Unreal’s built‑in Steam Input controller, delivering seamless support for gamepads, controllers, and custom mappings via the Enhanced Input System and Slate UI. It was developed to overcome the legacy plugin’s dependence on the deprecated input pipeline, enabling zero‑boilerplate setup and full compatibility with Unreal’s modern input architecture.</p>
+        </div>
+    </section>
+
+    <section class="feature-block">
+        <div class="container feature-box feature-layout">
+            <div class="feature-text">
+                <h3>Configure Once, Then Forget</h3>
+                <p>In the plugin’s settings page, just list your Steam action names and their types. It automatically generates matching Enhanced Input keys, ready to bind in your Input Action Mappings—no extra code or manual wiring required.</p>
+            </div>
+            <div class="feature-image">
+                <img src="assets/Keys_settings.webp" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-block">
+        <div class="container feature-box feature-layout reverse">
+            <div class="feature-text">
+                <h3>Automatically generated custom keys to ensure conflict‑free input</h3>
+                <p>Each Steam action you register gets its own unique Enhanced Input key, so you never have to worry about clashing with engine defaults or other plugins. This isolation means you can bind, unbind, and debug each action independently, making complex input setups far easier to manage. By avoiding hard‑coded key values, you get a more robust, future‑proof input system that scales cleanly as your action list grows.</p>
+            </div>
+            <div class="feature-image">
+                <img src="assets/Custom_Keys_Ready_To_Use.webp" alt="An image of a Input Mapping context's &acute;Bind Key&acute; window showing custom created input keys available for binding">
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-block">
+        <div class="container feature-box feature-layout">
+            <div class="feature-text">
+                <h3>Native handling of Steam action types</h3>
+                <p>The plugin automatically dispatches each Steam action according to its declared type: digital actions fire standard button‑pressed/released events, analog actions drive axis inputs, and actions marked as <code>MouseInput</code> simulate raw mouse movement through Unreal’s input pipeline. This ensures pointer‑based controls—cursors, camera pans, drag‑and‑drop—work seamlessly without hacks, while all other inputs still behave exactly as expected.</p>
+            </div>
+            <div class="feature-image">
+                <img src="assets/Controller_code.webp" alt="The code that drives what determines the type of action that get's handled">
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-block">
+        <div class="container feature-box feature-layout reverse">
+            <div class="feature-text">
+                <h3>Rebindable Slate navigation actions</h3>
+                <p>By default, Slate UI uses hard‑coded keys for menu navigation—no runtime rebinding. Our plugin adds a settings panel under Project Settings where you can map any Steam Input action (Up, Down, Left, Right, Confirm, Cancel, etc.) to Slate events. This gives players full control over UI bindings without touching code or rebuilds.  </p>
+            </div>
+            <div class="feature-image">
+                <img src="assets/Slate_settings.webp" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-block">
+        <div class="container feature-box feature-layout">
+            <div class="feature-text">
+                <h3>Graceful fallback when Steam Input is disabled</h3>
+                <p>If Steam Input is turned off or unavailable, the plugin remains inactive—no input actions are sent—so Unreal’s default input systems (Enhanced Input, Slate UI, native controllers) continue to function without interference. You can enable or disable Steam Input at runtime or via project settings, and the plugin will seamlessly toggle its mappings.</p>
+            </div>
+            <div class="feature-image">
+            </div>
+        </div>
+    </section>
+
+    <!--Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Lasse Broekstra</p>
+        </div>
+    </footer>
+</body>
+</html>
