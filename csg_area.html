@@ -2,95 +2,405 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dynamic Geometry Zones Inspired by Skyward Sword's Timegates</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSG Area Plugin - Technical Deep Dive | Lasse Broekstra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/prism.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="scripts/prism.js"></script>
 </head>
 <body>
-    <div class="content">
-        <!-- Header -->
-        <header>
-            <div class = "container">
-                <h1 class="logo">Lasse Broekstra</h1>
-                <nav>
-                    <ul>
-                        <li><a href="index.html#about">About Me</a></li>
-                        <li><a href="index.html#projects">Projects</a></li>
-                        <li><a href="https://rxresu.me/lassewolv/general-resume">Resume</a></li>
-                        <li><a href="mailto:lassewolv@gmail.com">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo">Lasse Broekstra</a>
+        <ul class="nav-links">
+                <span class="breadcrumb">
+                    <a href="index.html">Portfolio</a> / CSG Area Plugin
+                </span>
+            <li><a href="index.html#projects">← Back to Projects</a></li>
+        </ul>
     </div>
+</nav>
 
-    <main class="content">
-        <section class="about-section" id="overview">
-            <div class="banner"><img src="assets/CSG_Demo.webp" alt="Banner Image of the plugin in action"></div>
-            <div class="container">
-                <h2>Project Overview</h2>
-                <p>CSG Area is a custom plugin for the Unreal Engine that enables real-time Constructive Solid Geometry.</p>
-                <p>Inspired by the Timegate crystals in <em>Skyward Sword</em>, this plugin introduces custom components that are visible only when inside (or outside) defined areas—creating the illusion of an alternate world.</p>
-            </div>
-        </section>
-
-        <section class="feature-block">
-            <div class="container feature-box feature-layout">
-                <div class="feature-text">
-                    <h3>Area-Based Geometry Transition</h3>
-                    <p>The plugin supports dynamic objects that continuously adjust collision boundaries in real time, ensuring seamless interaction even as objects move. Leveraging Unreal's Geometry Scripting plugin, it recalculates shapes dynamically to maintain accurate collision detection.</p>
-                </div>
-                <div class="feature-image">
-                    <img src="assets/Moving_Boxes.webp" alt="feature 1">
-                </div>
-            </div>
-        </section>
-
-        <section class="feature-block">
-            <div class="container feature-box feature-layout reverse">
-                <div class="feature-text">
-                    <h3>Great flexibility through settings</h3>
-                    <p>Designed with configurability in mind, the plugin offers extensive settings that make it both flexible and user-friendly:</p>
-                    <ul>
-                        <li>Built-in support for static meshes</li>
-                        <li>Full exposure of collision generator settings for advanced customization</li>
-                        <li>Compatibility with meshes featuring multiple material slots, allowing specification of a custom material lists</li>
-                        <li>Option to change the material used for the “cut” segments of the mesh</li>
-                    </ul>
-                </div>
-                <div class="feature-image">
-                    <img src="assets/Great_configurability.png" alt="Good configurability">
-                </div>
-            </div>
-        </section>
-
-        <section class="feature-block">
-            <div class="container feature-box feature-layout">
-                <div class="feature-text">
-                    <h3>Ability to create custom meshes</h3>
-                    <p>Need something beyond a static mesh? Easily create custom components based on the provided framework and implement the exposed events to tailor functionality. This approach is fully compatible with Unreal's Geometry Scripting plugin for versatile mesh creation.</p>
-                </div>
-                <div class="feature-image">
-                    <img src="assets/Custom_Mesh_Implementation.png" alt="Custom Mesh Implementation">
-                </div>
-            </div>
-        </section>
-
-        <section class="feature-block">
-            <div class="container feature-box feature-layout reverse">
-                <div class="feature-text">
-                    <h3>Open source and free to download</h3>
-                    <p>As with all my projects, CSG Area is open source and free to download on GitHub.</p>
-                    <a href="https://github.com/Cynic1254/CSGArea">Get It here</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!--Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Lasse Broekstra</p>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="project-badge">Open Source Plugin • Real-Time CSG</div>
+        <h1>Dynamic Geometry Zones for Unreal Engine</h1>
+        <p class="subtitle">
+            Real-time Constructive Solid Geometry plugin that dynamically clips objects as they move in and out of
+            specified areas. Inspired by Skyward Sword's Timegate crystals, solving the "half-in, half-out"
+            problem with smooth geometry transitions.
+        </p>
+        <div class="cta-buttons">
+            <a href="https://github.com/Cynic1254/CSGArea" class="btn btn-primary" target="_blank">View on GitHub</a>
+            <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
         </div>
-    </footer>
+    </div>
+</section>
+
+<!-- Project Overview -->
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">The Problem</h2>
+        <div class="problem-solution">
+            <div class="problem-box">
+                <h3>Area-Based Visibility Limitations</h3>
+                <p>
+                    Traditional area-based effects (like Skyward Sword's Timegate crystals) use simple show/hide logic.
+                    When objects cross zone boundaries, they either pop in/out instantly or have jarring transitions.
+                    This breaks immersion and creates visual artifacts for large objects spanning boundaries.
+                </p>
+            </div>
+            <div class="solution-box">
+                <h3>Dynamic Geometry Clipping</h3>
+                <p>
+                    Real-time CSG system that continuously regenerates mesh geometry and collision as objects move.
+                    Objects smoothly appear/disappear with proper clipped geometry, maintaining visual coherence
+                    and physical accuracy even when partially inside zones.
+                </p>
+            </div>
+        </div>
+
+        <div class="impact-stats">
+            <div class="stat-card">
+                <div class="stat-number">Real-Time</div>
+                <div class="stat-label">CSG Operations</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Pop-in Artifacts</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Area Configurations</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">Multi</div>
+                <div class="stat-label">Material Support</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Use Cases -->
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">Gameplay Applications</h2>
+        <div class="use-case-grid">
+            <div class="use-case-card">
+                <div class="use-case-header">
+                    <h4>Skyward Sword Timegates</h4>
+                    <p>Time manipulation crystals</p>
+                </div>
+                <div class="use-case-body">
+                    <p>Hit crystals to reveal different time periods. Objects smoothly transition between present (desert) and past (lush) versions as they move in/out of the temporal field.</p>
+                </div>
+            </div>
+
+            <div class="use-case-card">
+                <div class="use-case-header">
+                    <h4>A Hat in Time Bells</h4>
+                    <p>Platform visibility control</p>
+                </div>
+                <div class="use-case-body">
+                    <p>Ring bells to enable/disable platforms in specific radii. Players must position themselves strategically as geometry phases in and out of existence.</p>
+                </div>
+            </div>
+
+            <div class="use-case-card">
+                <div class="use-case-header">
+                    <h4>Portal-Style Mechanics</h4>
+                    <p>Dimensional rifts and zones</p>
+                </div>
+                <div class="use-case-body">
+                    <p>Create dimensional tears where different realities overlap. Objects exist in multiple dimensions simultaneously, visible only in specific zones.</p>
+                </div>
+            </div>
+
+            <div class="use-case-card">
+                <div class="use-case-header">
+                    <h4>Puzzle Design</h4>
+                    <p>Area-based logical challenges</p>
+                </div>
+                <div class="use-case-body">
+                    <p>Design puzzles requiring players to manipulate multiple zones to create paths, reveal hidden objects, or access previously unreachable areas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Implementation -->
+<section class="content-section" id="how-it-works">
+    <div class="container">
+        <h2 class="section-title">Technical Architecture</h2>
+        <p>The system uses Unreal's GeometryScripting plugin for real-time CSG operations, combined with custom collision detection and material management.</p>
+
+        <div class="architecture-diagram">
+            <h4 style="margin-bottom: 2rem; color: var(--text-primary);">CSG Processing Pipeline</h4>
+            <div class="diagram-flow">
+                <div class="diagram-box">Collision Detection</div>
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-box">Geometry Analysis</div>
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-box">CSG Operations</div>
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-box">Mesh Updates</div>
+            </div>
+        </div>
+
+        <div class="tech-detail">
+            <h4>Core Components</h4>
+            <ul class="tech-list">
+                <li><strong>CSGBaseComponent:</strong> Base class providing core CSG functionality and material management</li>
+                <li><strong>CSGStaticMeshComponent:</strong> Implementation for static mesh objects with "Allow CPU Access" requirement</li>
+                <li><strong>CSGArea Components:</strong> Invisible volume triggers that define clipping boundaries</li>
+                <li><strong>Custom Collision Channel:</strong> Configurable collision channel for efficient area detection</li>
+                <li><strong>GeometryScripting Integration:</strong> Real-time mesh modification using Unreal's built-in geometry tools</li>
+                <li><strong>Material Array System:</strong> Support for multiple material slots with automatic cut-surface material assignment</li>
+            </ul>
+        </div>
+
+        <div class="code-title">Component Setup Example</div>
+        <div class="code-example">
+                <pre><code class="language-cpp">// CSG-enabled actor in your level
+UCLASS()
+class YOURGAME_API ACSGActor : public AActor
+{
+    GENERATED_BODY()
+
+public:
+    ACSGActor()
+    {
+        // Create the CSG static mesh component
+        CSGMesh = CreateDefaultSubobject&lt;UCSGStaticMeshComponent>(TEXT("CSGMesh"));
+        RootComponent = CSGMesh;
+
+        // Configure collision for CSG detection
+        CollisionComponent = CreateDefaultSubobject&lt;UStaticMeshComponent>(TEXT("Collision"));
+        CollisionComponent->SetCollisionResponseToChannel(ECC_GameTraceChannel1, ECR_Block);
+        CollisionComponent->AttachToComponent(RootComponent,
+            FAttachmentTransformRules::KeepRelativeTransform);
+    }
+
+protected:
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+    class UCSGStaticMeshComponent* CSGMesh;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+    class UStaticMeshComponent* CollisionComponent;
+};</code></pre>
+        </div>
+    </div>
+</section>
+
+<!-- Configuration & Usage -->
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">Plugin Configuration</h2>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>Project Settings</h3>
+                <p><strong>Collision Channel:</strong> Custom trace channel for CSG detection<br>
+                    <strong>Default Area Material:</strong> Editor visualization material for CSG zones</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>CSGBase Component</h3>
+                <p><strong>Do Reverse CSG:</strong> Show inside vs outside zones<br>
+                    <strong>Materials Array:</strong> Multi-material support<br>
+                    <strong>CSG Material:</strong> Material for cut surfaces</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <h3>CSGStatic Mesh</h3>
+                <p><strong>Mesh Setting:</strong> Static mesh with CPU access enabled<br>
+                    <strong>Allow CPU Access:</strong> Required for real-time geometry modification</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>Custom Components</h3>
+                <p><strong>GetVisualMesh():</strong> Override for custom geometry generation<br>
+                    <strong>GetCollisionMesh():</strong> Custom collision geometry creation</p>
+            </div>
+        </div>
+
+        <div class="code-title">Creating Custom CSG Components</div>
+        <div class="code-example">
+                <pre><code class="language-cpp">UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+class YOURGAME_API UCustomCSGComponent : public UCSGBaseComponent
+{
+    GENERATED_BODY()
+
+public:
+    UCustomCSGComponent();
+
+protected:
+    // Override to provide custom visual geometry
+    virtual void GetVisualMesh(UDynamicMesh* OutMesh) override
+    {
+        // Generate your custom geometry here
+        // Could be procedural, skeletal mesh conversion, etc.
+
+        // Example: Create a procedural box
+        FGeometryScriptPrimitiveOptions PrimOptions;
+        UGeometryScriptLibrary_MeshPrimitiveFunctions::AppendBox(
+            OutMesh, PrimOptions, FTransform::Identity,
+            BoxSize.X, BoxSize.Y, BoxSize.Z
+        );
+    }
+
+    // Override to provide custom collision geometry
+    virtual void GetCollisionMesh(UDynamicMesh* OutMesh) override
+    {
+        // Generate collision mesh (can be same as visual or optimized version)
+        GetVisualMesh(OutMesh);
+    }
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Custom CSG")
+    FVector BoxSize = FVector(100.0f, 100.0f, 100.0f);
+};</code></pre>
+        </div>
+    </div>
+</section>
+
+<!-- Performance & Limitations -->
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">Performance Considerations</h2>
+
+        <div class="problem-solution">
+            <div class="solution-box">
+                <h3>Optimized for Simple Geometry</h3>
+                <p>
+                    The system works excellently with simple shapes and moderate polygon counts.
+                    CSG operations are performed efficiently using Unreal's GeometryScripting,
+                    and collision detection uses custom channels for optimal performance.
+                </p>
+            </div>
+            <div class="problem-box">
+                <h3>Complex Mesh Limitations</h3>
+                <p>
+                    Performance degrades with high-polygon meshes due to real-time geometry generation requirements.
+                    The "Allow CPU Access" requirement also impacts memory usage. Currently limited to static meshes
+                    (skeletal mesh support possible but not implemented due to complexity).
+                </p>
+            </div>
+        </div>
+
+        <div class="tech-detail">
+            <h4>Performance Optimization Strategies</h4>
+            <ul class="tech-list">
+                <li><strong>LOD Integration:</strong> Use simplified geometry for CSG operations while maintaining visual fidelity</li>
+                <li><strong>Area Culling:</strong> Only perform CSG on objects actually overlapping with zones</li>
+                <li><strong>Update Frequency:</strong> Configurable update rates to balance smoothness vs. performance</li>
+                <li><strong>Geometry Caching:</strong> Cache CSG results for static scenarios to avoid redundant calculations</li>
+                <li><strong>Material Optimization:</strong> Efficient material slot management to minimize draw calls</li>
+                <li><strong>Collision Optimization:</strong> Separate visual and collision mesh complexity for better performance</li>
+            </ul>
+        </div>
+
+        <div class="tech-detail">
+            <h4>Known Limitations</h4>
+            <ul class="tech-list">
+                <li><strong>CPU Access Requirement:</strong> Static meshes must have "Allow CPU Access" enabled, increasing memory usage</li>
+                <li><strong>Real-time Generation:</strong> Collision and visual geometry generated on-demand, impacting performance with complex meshes</li>
+                <li><strong>Static Mesh Only:</strong> Currently supports static meshes; skeletal mesh support requires additional development</li>
+                <li><strong>Multiple Area Overlap:</strong> Works correctly but can be expensive with many overlapping zones</li>
+                <li><strong>Custom Collision:</strong> Limited to Unreal's collision system; no custom collision detection alternatives available</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Easy Integration -->
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">Easy Integration</h2>
+
+        <div class="code-title">Step-by-Step Setup</div>
+        <div class="code-example">
+                <pre><code class="language-bash"># 1. Install the plugin
+# Download from GitHub and place in your project's Plugins folder
+
+# 2. Enable required plugins
+# - CSGArea (this plugin)
+# - GeometryScripting (Unreal built-in)
+
+# 3. Configure project settings
+# Project Settings -> Plugins -> CSGArea Settings
+# - Set custom collision channel
+# - Configure default area material
+
+# 4. Prepare your static meshes
+# For any mesh you want to use with CSG:
+# - Open the Static Mesh asset
+# - Enable "Allow CPU Access" in Build Settings
+# - Save the asset
+
+# 5. Create CSG actors in your level
+# - Add actors with CSGStaticMeshComponent
+# - Add collision components using the configured collision channel
+# - Set up your materials array and CSG material
+
+# 6. Create CSG areas
+# - Place CSGArea actors to define zones
+# - Configure "Do Reverse CSG" as needed
+# - Test the dynamic geometry transitions</code></pre>
+        </div>
+
+        <div class="tech-detail">
+            <h4>Integration Benefits</h4>
+            <ul class="tech-list">
+                <li><strong>Plugin-Based:</strong> Drop into any Unreal project without engine modifications</li>
+                <li><strong>Component-Based Design:</strong> Easily add CSG functionality to existing actors</li>
+                <li><strong>Blueprint Friendly:</strong> All settings exposed to Blueprint system for designer control</li>
+                <li><strong>Editor Integration:</strong> Visual area representation and configuration in Unreal Editor</li>
+                <li><strong>Extensible Architecture:</strong> Custom components can override geometry generation for specific needs</li>
+                <li><strong>Standard Workflows:</strong> Works with existing Unreal material and collision systems</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Get Started -->
+<section class="content-section">
+    <div class="container" style="text-align: center;">
+        <h2 class="section-title">Ready to Create Dynamic Worlds?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-secondary);">
+            The CSG Area plugin opens up new possibilities for area-based gameplay mechanics.
+            From time manipulation to dimensional puzzles, create smooth transitions that maintain
+            immersion and visual coherence.
+        </p>
+        <div class="project-links" style="justify-content: center;">
+            <a href="https://github.com/Cynic1254/CSGArea" class="btn btn-primary" target="_blank">Download from GitHub</a>
+            <a href="mailto:contact@cynic1254.com" class="btn btn-secondary">Discuss Implementation</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <h3>Let's Build Something Great Together</h3>
+            <p>Always interested in challenging projects and collaborative opportunities.</p>
+        </div>
+        <div class="footer-links">
+            <a href="mailto:contact@cynic1254.com">Email</a>
+            <a href="https://github.com/Cynic1254" target="_blank">GitHub</a>
+            <a href="https://rxresu.me/lassewolv/general-resume" target="_blank">Resume</a>
+            <a href="https://www.linkedin.com/in/lasse-broekstra" target="_blank">LinkedIn</a>
+        </div>
+        <p>&copy; 2025 Lasse Broekstra. Built with passion for great developer tools.</p>
+    </div>
+</footer>
 </body>
 </html>

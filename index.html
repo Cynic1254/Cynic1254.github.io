@@ -1,119 +1,251 @@
 ﻿<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>Lasse Broekstra | C++ Game Programmer</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lasse Broekstra | Tools & Pipeline Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="content">
-
-  <!-- Header -->
-  <header>
-    <div class = "container">
-      <h1 class="logo">Lasse Broekstra - Engine and Tools Programmer</h1>
-      <nav>
-        <ul>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="https://rxresu.me/lassewolv/general-resume">Resume</a></li>
-          <li><a href="mailto:contact@cynic1254.com">Contact</a></li>
+<nav>
+    <div class="nav-container">
+        <a href="#" class="logo">Lasse Broekstra</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="https://rxresu.me/lassewolv/general-resume" target="_blank">Resume</a></li>
+            <li><a href="mailto:contact@cynic1254.com">Contact</a></li>
         </ul>
-      </nav>
     </div>
-  </header>
+</nav>
 
-  <!-- about -->
-  <section id="about" class="about-section">
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Tools & Pipeline Developer</h1>
+        <p class="subtitle">Making developers more productive, one tool at a time</p>
+        <p class="description">
+            I specialize in building the invisible infrastructure that powers game development—CI/CD pipelines,
+            developer tools, and engine systems that make teams more efficient and creative work possible.
+        </p>
+        <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="mailto:contact@cynic1254.com" class="btn btn-secondary">Get In Touch</a>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Stack -->
+<section class="tech-stack">
     <div class="container">
-      <h2>About Me</h2>
-      <p>Hello, I'm Lasse—a third-year programming student at the Breda University of Applied Sciences (BUAS) specializing in engine, tools, and CI/CD pipeline development. My work focuses on designing user-friendly, scalable systems that adapt seamlessly to evolving requirements. Quick to embrace new skills and challenges, I’m driven to innovate and continuously improve in the dynamic field of software development.</p>
+        <h2 style="text-align: center; margin-bottom: 1rem; color: var(--text-primary);">Core Technologies</h2>
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="icon">C++</div>
+                <span>C++</span>
+            </div>
+            <div class="tech-item">
+                <div class="icon">UE</div>
+                <span>Unreal Engine</span>
+            </div>
+            <div class="tech-item">
+                <div class="icon">CI</div>
+                <span>Jenkins CI/CD</span>
+            </div>
+            <div class="tech-item">
+                <div class="icon">ST</div>
+                <span>Steam API</span>
+            </div>
+            <div class="tech-item">
+                <div class="icon">GS</div>
+                <span>Git/Source Control</span>
+            </div>
+            <div class="tech-item">
+                <div class="icon">CL</div>
+                <span>Clang/LLVM</span>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- Projects -->
-  <section id="projects" class="project-section">
+<!-- About Section -->
+<section id="about" class="section">
     <div class="container">
-      <h2>Projects & Skills</h2>
-      <div class="project-card">
-        <div class="project-info">
-          <h2 class="project-title">Dynamic Geometry Zones Inspired by Skyward Sword's Timegates</h2>
-          <p>An Unreal Engine plugin inspired by Skyward Sword's time-shift zones, enabling dynamic geometry transitions within specific areas.</p>
-          <ul class="project-features">
-            <li>Area-based geometry swapping with seamless real-time transitions</li>
-            <li>Automatic mesh updates when objects enter or exit the zone</li>
-            <li>Supports variable number of materials</li>
-            <li>Fully contained as a standalone plugin for easy integration</li>
-          </ul>
-          <a href="csg_area.html" class="read-more">Read More</a>
+        <div class="section-header">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">
+                Programming student at BUAS with a passion for building systems that empower other developers.
+                I thrive on solving complex technical challenges and creating tools that make development workflows smoother and more efficient.
+            </p>
         </div>
-        <div class="project-image">
-          <img src="assets/CSG_Demo.webp" alt="Small demo showcasing what is possible with the plugin">
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-info">
-          <h2 class="project-title">Static Reflection System (Unreal‑style)</h2>
-          <p>A header‑only C++ reflection tool that leverages Clang to discover annotated symbols, automatically generating boilerplate—serialization, registration, metadata, and more—so you can focus on game logic, not plumbing.</p>
-          <ul class="project-features">
-            <li>Unreal‑style macros to expose classes, functions, and properties with zero runtime cost</li>
-            <li>Header‑only design: annotations compile out to nothing when reflection isn’t needed</li>
-            <li>Clang‑powered parsing for 100% accurate symbol extraction</li>
-            <li>Scriptable code‑generation pipeline for fully customizable output</li>
-            <li>Cross‑platform support (MSVC, GCC, Clang) and easy CMake/MSBuild integration</li>
-            <li>Extensible via macro parameters: filter, rename, group, or attach metadata</li>
-          </ul>
-          <a href="https://cynic1254.github.io/Block-B-blog/" class="read-more">Read More</a>
-        </div>
-        <div class="project-image">
-          <img src="assets/Code_Generation_Cover.png" alt="">
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-info">
-          <h2 class="project-title">Katharsi — Puzzle Adventure in a Corrupted Byzantine Cathedral</h2>
-          <p>Katharsi is an atmospheric 3D puzzle‑adventure set in a corrupted Byzantine cathedral. Explore ever‑shifting architecture, manipulate intricate environmental puzzles, and piece together a haunting narrative of loss and redemption. Currently, in active development by a 15‑student capstone team at BUAS, Katharsi is being built for Steam and Steam Deck.</p>
-          <ul class="project-features">
-            <li>Automated Jenkins CI/CD pipeline for builds and automated tests</li>
-            <li>Full Steam Input API integration (gamepad, keyboard/mouse and custom controller mappings)</li>
-            <li>Cross‑platform packaging and automated Steam depot uploads</li>
-            <li>Automated smoke‑tests and dependency management</li>
-            <li>Active development of core gameplay mechanics and environmental puzzles</li>
-            <li>Released a playable Steam demo to gather community feedback and guide iteration</li>
-          </ul>
-          <a href="katharsi.html" class="read-more">Read More</a>
-        </div>
-        <div class="project-image">
-          <img src="assets/Katharsi_Cover.png" alt="">
-        </div>
-      </div>
-      <div class="project-card">
-        <div class="project-info">
-          <h2 class="project-title">Steam Input API Plugin for Unreal Engine</h2>
-          <p>A drop‑in Unreal Engine plugin that replaces the built‑in Steam Input support, integrating Steam’s full input stack seamlessly with Unreal’s Enhanced Input and Slate UI systems.</p>
-          <ul class="project-features">
-            <li>Zero‑boilerplate Steam Input: register any input action once, and it’s automatically exposed as an Enhanced Input key throughout your project.</li>
-            <li>Full device coverage: buttons, triggers, joysticks, trackpads, simulated mouse—and everything Steam supports.</li>
-            <li>Native Slate bindings: map Steam Input actions directly to Slate events, no workaround hacks required.</li>
-            <li>Graceful fallback: if Steam Input is disabled, all other input systems continue to work unaffected.</li>
-          </ul>
-          <a href="steam_input_api.html" class="read-more">Read More</a>
-        </div>
-        <div class="project-image">
-          <img src="assets/Input_API.webp" alt="">
-        </div>
-      </div>
     </div>
-  </section>
-</div>
+</section>
 
-<!--Footer -->
+<!-- Projects Section -->
+<section id="projects" class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">
+                A showcase of tools, systems, and games that demonstrate my expertise in pipeline development,
+                engine programming, and team collaboration.
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Steam Input API Plugin -->
+            <div class="project-card">
+                <div class="project-content">
+                    <div class="project-info">
+                        <span class="project-status">Production Ready</span>
+                        <h3 class="project-title">Steam Input API Plugin</h3>
+                        <p class="project-description">
+                            Drop-in Unreal Engine plugin that seamlessly integrates Steam's complete input system with Enhanced Input and Slate UI—solving real developer pain points with zero boilerplate.
+                        </p>
+                        <ul class="project-features">
+                            <li>Zero-configuration Steam Input: register once, use everywhere</li>
+                            <li>Full device coverage: controllers, trackpads, simulated mouse</li>
+                            <li>Native Slate UI bindings with runtime remapping</li>
+                            <li>Graceful fallback when Steam Input is disabled</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Unreal Engine</span>
+                            <span class="tech-tag">Steam API</span>
+                            <span class="tech-tag">Enhanced Input</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="steam_input_api_detail.html" class="project-link">Technical Deep Dive</a>
+                            <span class="link-separator">|</span>
+                            <a href="https://github.com/Cynic1254/SteamTools" class="project-link" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-image">
+                        <img src="assets/Input_API.webp" alt="Steam Input configuration interface" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Katharsi -->
+            <div class="project-card">
+                <div class="project-content">
+                    <div class="project-info">
+                        <span class="project-status">Live on Steam</span>
+                        <h3 class="project-title">Katharsi - Pipeline & Tools Development</h3>
+                        <p class="project-description">
+                            Leading build pipeline and tools development for a 15-person team creating an atmospheric puzzle adventure.
+                            Shipped playable Steam demo with automated CI/CD infrastructure.
+                        </p>
+                        <ul class="project-features">
+                            <li>Automated Jenkins CI/CD with daily testing suites</li>
+                            <li>Cross-platform build system with Steam depot uploads</li>
+                            <li>Custom tools for asset management and quality assurance</li>
+                            <li>Team productivity improvements through automation</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">Unreal Engine</span>
+                            <span class="tech-tag">Steam API</span>
+                            <span class="tech-tag">Build Automation</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="katharsi.html" class="project-link">Technical Deep Dive</a>
+                            <span class="link-separator">|</span>
+                            <a href="https://store.steampowered.com/app/3365850/Katharsi/" class="project-link" target="_blank">Play on Steam</a>
+                        </div>
+                    </div>
+                    <div class="project-image">
+                        <img src="assets/Katharsi_Cover.png" alt="Katharsi game screenshot" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Static Reflection System -->
+            <div class="project-card">
+                <div class="project-content">
+                    <div class="project-info">
+                        <span class="project-status">Private</span>
+                        <h3 class="project-title">Static Reflection System</h3>
+                        <p class="project-description">
+                            Header-only C++ reflection library using Clang for zero-runtime-cost metadata generation.
+                            Unreal-style macros with fully customizable code generation pipeline.
+                        </p>
+                        <ul class="project-features">
+                            <li>Zero runtime cost with compile-time annotations</li>
+                            <li>Clang-powered parsing for 100% accurate symbol extraction</li>
+                            <li>Cross-platform support (MSVC, GCC, Clang)</li>
+                            <li>Scriptable code generation for custom output formats</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Clang/LLVM</span>
+                            <span class="tech-tag">Template Metaprogramming</span>
+                            <span class="tech-tag">Code Generation</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="code_generation.html" class="project-link">Technical Deep Dive</a>
+                            <span class="link-separator">|</span>
+                            <a href="https://cynic1254.github.io/Block-B-blog/" class="project-link" target="_blank">Read Technical Blog</a>
+                        </div>
+                    </div>
+                    <div class="project-image">
+                        <img src="assets/Code_Generation_Cover.png" alt="Code generation workflow diagram" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- CSG Area Plugin -->
+            <div class="project-card">
+                <div class="project-content">
+                    <div class="project-info">
+                        <span class="project-status">Open Source</span>
+                        <h3 class="project-title">Dynamic Geometry Zones</h3>
+                        <p class="project-description">
+                            Unreal Engine plugin inspired by Skyward Sword's time-shift mechanics.
+                            Real-time constructive solid geometry with seamless area-based transitions.
+                        </p>
+                        <ul class="project-features">
+                            <li>Real-time CSG operations with dynamic collision updates</li>
+                            <li>Seamless geometry transitions within defined areas</li>
+                            <li>Configurable material handling and custom mesh support</li>
+                            <li>Integration with Unreal's Geometry Scripting plugin</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Unreal Engine</span>
+                            <span class="tech-tag">Geometry Processing</span>
+                            <span class="tech-tag">Real-time Rendering</span>
+                        </div>
+                        <a href="https://github.com/Cynic1254/CSGArea" class="project-link" target="_blank">View on GitHub</a>
+                    </div>
+                    <div class="project-image">
+                        <img src="assets/CSG_Demo.webp" alt="Dynamic geometry transition demo" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
 <footer>
-  <div class="container">
-    <p>&copy; 2025 Lasse Broekstra</p>
-  </div>
+    <div class="container">
+        <div class="footer-content">
+            <h3>Let's Build Something Great Together</h3>
+            <p>Always interested in challenging projects and collaborative opportunities.</p>
+        </div>
+        <div class="footer-links">
+            <a href="mailto:contact@cynic1254.com">Email</a>
+            <a href="https://github.com/Cynic1254" target="_blank">GitHub</a>
+            <a href="https://rxresu.me/lassewolv/general-resume" target="_blank">Resume</a>
+            <a href="https://www.linkedin.com/in/lasse-broekstra" target="_blank">LinkedIn</a>
+        </div>
+        <p>&copy; 2025 Lasse Broekstra. Built with passion for great developer tools.</p>
+    </div>
 </footer>
+
+<script src="scripts/Main.js"></script>
+
 </body>
 </html>
