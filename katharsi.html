@@ -1,0 +1,544 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katharsi - Pipeline & Tools Development | Lasse Broekstra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/prism.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="scripts/prism.js"></script>
+</head>
+
+<body>
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo">Lasse Broekstra</a>
+        <ul class="nav-links">
+                <span class="breadcrumb">
+                    <a href="index.html">Portfolio</a> / Katharsi Project
+                </span>
+            <li><a href="index.html#projects">← Back to Projects</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="project-badge">Live on Steam • BUAS Capstone Project</div>
+        <h1>Katharsi - DevOps & Steam Integration</h1>
+        <p class="subtitle">
+            Managing build pipeline and Steam integration for a 15-person BUAS capstone team.
+            Built automated Jenkins CI/CD, Steam deployment systems, and developer tools that enabled our team to
+            successfully ship a commercial game demo and final release.
+        </p>
+        <div class="cta-buttons">
+            <a href="https://store.steampowered.com/app/3365850/Katharsi/" class="btn btn-primary" target="_blank">Play on Steam</a>
+            <a href="#pipeline" class="btn btn-secondary">See the Pipeline</a>
+        </div>
+    </div>
+</section>
+
+<!-- Project Overview -->
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">Project Overview</h2>
+        <div class="problem-solution">
+            <div class="problem-box">
+                <h3>The Challenge</h3>
+                <p>
+                    A 15-person capstone team (3 programmers, 6 artists, 5 designers, 1 producer) needed efficient
+                    collaboration on a year-long commercial game project. Manual builds, inconsistent testing, and
+                    complex Steam deployment were blocking progress and creating integration headaches.
+                </p>
+            </div>
+            <div class="solution-box">
+                <h3>My Solution</h3>
+                <p>
+                    Built comprehensive DevOps infrastructure with automated Jenkins pipelines, daily testing suites,
+                    Steam deployment automation, and custom Discord integration. Managed both our team's pipeline and
+                    served as Jenkins administrator for the entire BUAS program.
+                </p>
+            </div>
+        </div>
+
+        <div class="team-stats">
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Team Members</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Year Development</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Programmers Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">Daily</div>
+                <div class="stat-label">Automated Tests</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Steam Releases</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Responsibilities -->
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">My Role & Responsibilities</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>Jenkins CI/CD Pipeline</h3>
+                <p>Built automated Jenkins pipelines for daily testing and weekly deployment builds. Created custom Groovy libraries for Unreal Engine integration and Discord notifications.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>Steam Integration & Management</h3>
+                <p>Managed SteamWorks page, implemented Steam Input API, and built automated Steam deployment pipeline with branch management and SteamGuard authentication handling.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧪</div>
+                <h3>Automated Testing Framework</h3>
+                <p>Implemented daily automated testing with Unreal's automation framework, custom test result parsing, and detailed Discord reporting for immediate team feedback.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍💼</div>
+                <h3>BUAS Jenkins Administration</h3>
+                <p>Served as Jenkins administrator for the entire BUAS program, managing infrastructure for multiple teams and maintaining shared Jenkins libraries for Unreal projects.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Custom Discord Integration</h3>
+                <p>Created comprehensive Discord notification system with rich embed formatting, automated test reports, and Steam deployment status updates for seamless team communication.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>Multi-Platform Build System</h3>
+                <p>Set up cross-platform builds with Perforce integration, automated Google Drive backup, and flexible deployment targeting for Steam, Itch.io, and internal testing.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CI/CD Pipeline -->
+<section class="content-section" id="pipeline">
+    <div class="container">
+        <h2 class="section-title">Jenkins Pipeline Architecture</h2>
+        <p>Two-pipeline approach: daily automated testing for continuous quality assurance and weekly deployment builds for release management.</p>
+
+        <div class="pipeline-diagram">
+            <h4 style="margin-bottom: 2rem; color: var(--text-primary); text-align: center;">Daily Testing Pipeline</h4>
+            <div class="pipeline-flow">
+                <div class="pipeline-stage">
+                    <h4>Perforce Sync</h4>
+                    <p>Latest changelist from depot</p>
+                </div>
+                <div class="pipeline-stage">
+                    <h4>Automated Testing</h4>
+                    <p>Run project automation tests</p>
+                </div>
+                <div class="pipeline-stage">
+                    <h4>Discord Reporting</h4>
+                    <p>Rich embed test results</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="code-title">Daily Test Pipeline (DailyTest.txt)</div>
+        <div class="code-example">
+                <pre><code class="language-groovy">// Custom Discord tools library for rich notifications
+def JenkinsTools = library('DiscordTools@master').com.github.cynic1254
+
+library identifier: 'JenkinsLib@master',
+    retriever: modernSCM([
+      $class: 'GitSCMSource',
+      credentialsId: '',
+      remote: 'redacted'
+    ])
+
+pipeline {
+    agent {
+        node {
+            label "Win64"
+            customWorkspace "C:\\Jenkins\\${env.JOB_NAME}"
+        }
+    }
+    environment {
+        // Redacted
+    }
+
+    stages {
+        stage ("Init") {
+            steps {
+                script {
+                    JenkinsTools.Library.Init(this)
+                }
+            }
+        }
+
+        stage ("P4 Setup") {
+            steps {
+                script {
+                    def newestChangeList = p4v.initGetLatestCL(env.P4USER, env.P4HOST)
+                    echo("NEWEST CHANGELIST: ${newestChangeList}")
+                    p4v.init(env.P4USER, env.P4HOST, env.P4WORKSPACE, env.P4MAPPING, newestChangeList, !true)
+                    echo("P4 synced to: ${env.P4_CHANGELIST}")
+                }
+            }
+        }
+
+        stage ("Testing") {
+            steps {
+                script {
+                    // Run Unreal automation tests and parse results
+                    def testResult = JenkinsTools.Unreal.RunAutomationCommand("RunTests Project")
+
+                    // Send rich Discord embed with test results
+                    JenkinsTools.DiscordMessage.FromTestResults(testResult).Send(env.DiscordWebhook)
+
+                    // Generate JUnit XML for Jenkins integration
+                    testResult.WriteXMLToFile("${env.WORKSPACE}/Logs/UnitTestsReport/Report.xml")
+
+                    junit allowEmptyResults: true,
+                          skipMarkingBuildUnstable: true,
+                          testResults: 'Logs/UnitTestsReport/Report.xml'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            script {
+                JenkinsTools.DiscordMessage.Succeeded().Send(env.DiscordWebhook)
+            }
+        }
+        failure {
+            script {
+                JenkinsTools.DiscordMessage.Failed().Send(env.DiscordWebhook)
+            }
+        }
+        cleanup {
+            script {
+                if(env.CLEANWORKSPACE.toBoolean()) {
+                    cleanWs()
+                }
+            }
+        }
+    }
+}</code></pre>
+        </div>
+    </div>
+</section>
+
+<!-- Custom Discord Integration -->
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">Custom Discord Integration</h2>
+        <p>Built a comprehensive Discord notification system with rich embeds for test results, build status, and Steam deployment updates.</p>
+
+        <div class="code-title">Discord Message System (DiscordMessage.groovy)</div>
+        <div class="code-example">
+                <pre><code class="language-groovy">static DiscordMessage FromTestResults(UnrealTestResult testResults) {
+    def embed = new Embed()
+
+    if (testResults.failed > 0) {
+        embed.title = "Some tests failed!"
+        embed.color = 16776960  // Yellow
+        embed.description = "(${testResults.failed}/${testResults.failed + testResults.succeeded}) tests failed"
+        embed.fields = ParseTestResultFields(testResults)
+    } else {
+        embed.title = "All tests succeeded!"
+        embed.color = 65280     // Green
+        embed.description = "Successfully ran all tests"
+    }
+
+    embed.footer = new Embed.Footer(
+        text: "Ran ${testResults.succeeded + testResults.failed} tests in ${String.format("%.4f", testResults.totalDuration)} seconds. Full results: ${Library.steps.env.BUILD_URL}"
+    )
+
+    return new DiscordMessage(
+        avatar_url: "https://preview.redd.it/is-it-normal-for-games-to-have-a-unreal-engine-logo-as-its-v0-ekvife6ql3xc1.jpeg",
+        username: "Unreal Test Result",
+        embeds: [embed]
+    )
+}
+
+static DiscordMessage SteamPushStarted(String AuthorizerID) {
+    return new DiscordMessage(
+        embeds: [
+            new Embed(
+                title: "Started push to steam",
+                color: 16777215, // White
+                fields: [
+                    new Embed.Field(
+                        name: "Push to Steam has been initiated, SteamGuard Authorization might be required",
+                        value: "${Library.steps.env.BUILD_URL}"
+                    ),
+                    new Embed.Field(
+                        name: "Authorizer:",
+                        value: "&lt;@${AuthorizerID}>"
+                    )
+                ]
+            )
+        ],
+        allowed_mentions: new Mentions(users: ["${AuthorizerID}"]),
+        username: "Steam Auth",
+        avatar_url: "https://e1.pngegg.com/pngimages/855/514/png-clipart-clay-os-6-a-macos-icon-steam-steam-logo-thumbnail.png"
+    )
+}</code></pre>
+        </div>
+
+        <div class="tech-detail">
+            <h4>Discord Integration Features</h4>
+            <ul class="tech-list">
+                <li><strong>Rich Embed Formatting:</strong> Color-coded messages with structured test results and build status</li>
+                <li><strong>Automated Test Reporting:</strong> Daily test results with failure details and duration metrics</li>
+                <li><strong>Steam Deployment Notifications:</strong> SteamGuard authorization requests with user mentions</li>
+                <li><strong>Build Status Updates:</strong> Success/failure notifications with changelist information and build links</li>
+                <li><strong>Custom Avatars & Usernames:</strong> Context-specific bot appearance for different message types</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Development Timeline -->
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">Development Timeline</h2>
+        <p>Year-long capstone project from concept to commercial Steam release:</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker">1</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">September 2023: Project Start</div>
+                    <div class="timeline-title">Initial Setup & Planning</div>
+                    <p>Team formation, initial concept development, and Jenkins infrastructure setup. Established basic build pipeline and Steam development environment.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">2</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">October-December 2023: Foundation</div>
+                    <div class="timeline-title">Core Pipeline Development</div>
+                    <p>Built daily testing pipeline, implemented Discord integration, and established automated Perforce sync. Created custom Groovy libraries for team workflow.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">3</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">January-March 2024: Production</div>
+                    <div class="timeline-title">Steam Integration & Advanced Features</div>
+                    <p>Implemented Steam Input API, built deployment automation with SteamGuard handling, and refined testing framework based on development needs.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">4</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">April 9, 2024: Demo Release</div>
+                    <div class="timeline-title">Successful Steam Demo Launch</div>
+                    <p>Deployed playable Steam demo using automated pipeline. Zero critical deployment issues thanks to comprehensive testing and deployment automation.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker">5</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">June 12, 2024: Final Release</div>
+                    <div class="timeline-title">Commercial Game Release</div>
+                    <p>Successfully launched complete game on Steam. Pipeline handled final release deployment smoothly, enabling team to focus on last-minute polish and marketing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Steam Deployment System -->
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">Steam Deployment Architecture</h2>
+
+        <div class="tech-detail">
+            <h4>Automated Steam Pipeline with SteamGuard Integration</h4>
+            <p>Built sophisticated Steam deployment with authentication handling and branch management:</p>
+
+            <div class="code-title">Steam Deployment Logic (BuildAndDeploy.txt)</div>
+            <div class="code-example">
+                    <pre><code class="language-groovy">stage("Primary-DDS-Deployment") {
+    when {
+        expression { env.DEPLOYTODDS.toBoolean() }
+    }
+    steps {
+        script {
+            if(env.DDS == "Steam") {
+                if(currentBuild.result == "UNSTABLE") {
+                    log.warning("====!!==== UNSTABLE BUILD - PUSH TO STEAM ABORTED ====!!====")
+                } else if(env.PLATFORM == "PS5") {
+                    log.warning("====!!==== PS5 BUILD - NOT ALLOWED TO UPLOAD TO STEAM ====!!====")
+                } else {
+                    // Notify team of Steam deployment start
+                    discord.sendMessage(discord.createMessage(
+                        "Started push to steam",
+                        "white",
+                        [[name:"Push to Steam has been initiated, SteamGuard Authorization might be required",
+                          value:"${env.BUILD_URL}"],
+                         [name:"Authorizer:",
+                          value:"&lt;@354316115704545281>"]],
+                        [text:"${env.JOB_BASE_NAME}"])
+                        , env.WebHook_BUILD)
+
+                    steam.init(env.STEAMUSR, env.STEAMCMD)
+
+                    // Create appropriate depot manifest based on platform
+                    def appManifest
+                    if (env.PLATFORM == "Linux"){
+                        appManifest = steam.createAppManifest("3365850", "3365852", "",
+                                     "${env.JOB_BASE_NAME}", false, "", "${env.STEAMBRANCH}", env.OUTPUTDIR)
+                        steam.createDepotManifest("3365852", "${env.OUTPUTDIR}\\${platformDir}")
+                    } else {
+                        appManifest = steam.createAppManifest("3365850", "3365851", "",
+                                     "${env.JOB_BASE_NAME}", false, "", "${env.STEAMBRANCH}", env.OUTPUTDIR)
+                        steam.createDepotManifest("3365851", "${env.OUTPUTDIR}\\${platformDir}")
+                    }
+
+                    try {
+                        steam.tryDeploy("${env.WORKSPACE}\\${appManifest}")
+                    } catch (Exception e) {
+                        dds_auth_timeout = true
+
+                        // Handle SteamGuard timeout gracefully
+                        discord.sendMessage(discord.createMessage(
+                            "Steam Authorization Timed Out",
+                            "white",
+                            [[name:"Steam Authorization was not provided in time, Build has not been uploaded to steam, will be uploaded to GDrive instead",
+                              value:"${env.BUILD_URL}"]],
+                            [text:"${env.JOB_BASE_NAME}"])
+                            , env.WebHook_BUILD)
+
+                        catchError(stageResult: 'UNSTABLE', buildResult: currentBuild.result) {
+                            error("Mark Stage as Skipped")
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="tech-detail">
+            <h4>Key Infrastructure Features</h4>
+            <ul class="tech-list">
+                <li><strong>Multi-Platform Support:</strong> Automated builds for Windows and Linux with platform-specific Steam depot handling</li>
+                <li><strong>Branch Management:</strong> Flexible Steam branch targeting for development, testing, and production releases</li>
+                <li><strong>SteamGuard Integration:</strong> Automated handling of Steam two-factor authentication with Discord notifications</li>
+                <li><strong>Graceful Fallback:</strong> Automatic Google Drive backup if Steam deployment fails or times out</li>
+                <li><strong>Build Quality Gates:</strong> Prevents unstable builds from reaching Steam while maintaining development velocity</li>
+                <li><strong>Comprehensive Logging:</strong> Detailed build logs and Discord notifications for full deployment transparency</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Impact & Results -->
+<section class="content-section">
+    <div class="container">
+        <h2 class="section-title">Impact & Results</h2>
+
+        <div class="team-stats">
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Successful Steam Releases</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">365+</div>
+                <div class="stat-label">Days of Automated Testing</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Critical Deployment Issues</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7+</div>
+                <div class="stat-label">BUAS Teams Supported</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Automated Build Process</div>
+            </div>
+        </div>
+
+        <div class="tech-detail">
+            <h4>Measurable Team Benefits</h4>
+            <ul class="tech-list">
+                <li><strong>Successful Commercial Release:</strong> Delivered both Steam demo (April 2024) and final game (June 2024) with zero critical deployment issues</li>
+                <li><strong>Daily Quality Assurance:</strong> 365+ days of automated testing caught regressions before they impacted development</li>
+                <li><strong>Team Productivity:</strong> Eliminated manual build and deployment overhead, allowing artists and designers to focus on creative work</li>
+                <li><strong>Institutional Impact:</strong> Jenkins libraries and practices adopted by multiple BUAS teams for their capstone projects</li>
+                <li><strong>Steam Integration Excellence:</strong> Seamless Steam Input API implementation and automated depot management</li>
+                <li><strong>Professional Development Process:</strong> Established industry-standard DevOps practices in academic environment</li>
+            </ul>
+        </div>
+
+        <div class="tech-detail">
+            <h4>Technologies & Tools Used</h4>
+            <ul class="tech-list">
+                <li><strong>CI/CD:</strong> Jenkins with custom Groovy libraries, Windows build agents, and Unreal Engine integration</li>
+                <li><strong>Version Control:</strong> Perforce with automated workspace management and changelist synchronization</li>
+                <li><strong>Steam Integration:</strong> SteamWorks SDK, Steam Input API, SteamCMD for automated depot deployment</li>
+                <li><strong>Testing:</strong> Unreal Engine Automation Framework with custom result parsing and XML generation</li>
+                <li><strong>Communication:</strong> Discord webhooks with rich embed formatting and automated notifications</li>
+                <li><strong>Build Tools:</strong> Unreal Automation Tool (UAT), cross-platform packaging, and asset validation</li>
+                <li><strong>Backup Systems:</strong> Google Drive integration for build artifacts and emergency deployment fallback</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Get Started -->
+<section class="content-section">
+    <div class="container" style="text-align: center;">
+        <h2 class="section-title">Experience the Result</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-secondary);">
+            All this infrastructure work enabled our team to successfully ship a commercial game.
+            The DevOps foundation allowed creators to focus on crafting an engaging puzzle experience.
+        </p>
+        <div class="project-links" style="justify-content: center;">
+            <a href="https://store.steampowered.com/app/3365850/Katharsi/" class="btn btn-primary" target="_blank">Play Katharsi on Steam</a>
+            <a href="mailto:contact@cynic1254.com" class="btn btn-secondary">Discuss DevOps Architecture</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <h3>Let's Build Something Great Together</h3>
+            <p>Always interested in challenging projects and collaborative opportunities.</p>
+        </div>
+        <div class="footer-links">
+            <a href="mailto:contact@cynic1254.com">Email</a>
+            <a href="https://github.com/Cynic1254" target="_blank">GitHub</a>
+            <a href="https://rxresu.me/lassewolv/general-resume" target="_blank">Resume</a>
+            <a href="https://www.linkedin.com/in/lasse-broekstra" target="_blank">LinkedIn</a>
+        </div>
+        <p>&copy; 2025 Lasse Broekstra. Built with passion for great developer tools.</p>
+    </div>
+</footer>
+
+</body>
+</html>
