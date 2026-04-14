@@ -129,8 +129,8 @@ pipeline {
           log.currStage()
           win.makeWritable(env.PROJECTDIR)
           if(env.PLATFORM == "PS5") {
-					      win.movePathFiles("\"${PROJECTDIR}Content\\Images\"", "\"${ENGINEROOT}Engine\\Platforms\\PS5\\Build\\sce_sys\"")
-					      }
+                win.movePathFiles("\"${PROJECTDIR}Content\\Images\"", "\"${ENGINEROOT}Engine\\Platforms\\PS5\\Build\\sce_sys\"")
+                }
           ue5.buildPrecompiledProject(env.ENGINEROOT, env.PROJECTNAME, env.PROJECT, env.CONFIG, env.PLATFORM, env.OUTPUTDIR)
         }
       }
@@ -222,12 +222,12 @@ pipeline {
       steps {
         script {
           log.currStage()
-				  if(env.PLATFORM == "Win64") {
-				    zip.pack("${env.OUTPUTDIR}\\Windows", "${env.JOB_BASE_NAME}_${env.BUILD_NUMBER}", use7z = false)
-				  }
-				  else {
-				    zip.pack("${env.OUTPUTDIR}\\${env.PLATFORM}", "${env.JOB_BASE_NAME}_${env.BUILD_NUMBER}", use7z = false)
-				  }
+          if(env.PLATFORM == "Win64") {
+            zip.pack("${env.OUTPUTDIR}\\Windows", "${env.JOB_BASE_NAME}_${env.BUILD_NUMBER}", use7z = false)
+          }
+          else {
+            zip.pack("${env.OUTPUTDIR}\\${env.PLATFORM}", "${env.JOB_BASE_NAME}_${env.BUILD_NUMBER}", use7z = false)
+          }
           withCredentials([file(credentialsId: '----', variable: 'SECRETFILE')]) {
             python.runScript("${env.PYTHONGDRIVEUPLOAD}", "${SECRETFILE}\" \"${env.WORKSPACE}\\${env.JOB_BASE_NAME}_${env.BUILD_NUMBER}.zip\" \"${env.JOB_BASE_NAME}_${env.BUILD_NUMBER}.zip\" \"${env.GOOGLEDRIVEID}\" ${env.UPLOADSIZEMULTIPLIER}")
           }
