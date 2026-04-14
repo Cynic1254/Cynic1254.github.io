@@ -1,0 +1,68 @@
+---
+layout: default
+---
+
+<nav class="project-breadcrumb">
+  <div class="container">
+    <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <span>/</span>
+    <a href="{{ '/#projects' | relative_url }}">Projects</a>
+    <span>/</span>
+    <span class="current">{{ page.title }}</span>
+  </div>
+</nav>
+
+<section class="project-hero">
+  <div class="container">
+    {% if page.status %}
+    <div class="project-hero__eyebrow">{{ page.status }}</div>
+    {% endif %}
+
+    <h1 class="project-hero__title">{{ page.title }}</h1>
+
+    {% if page.summary %}
+    <p class="project-hero__summary">{{ page.summary }}</p>
+    {% endif %}
+
+    {% if page.tags %}
+    <div class="project-hero__tags">
+      {% for tag in page.tags %}
+      <span class="project-hero__tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="project-hero__links">
+      {% if page.link_detail_label and page.link_detail_url %}
+        <a href="{{ page.link_detail_url }}" class="btn btn--primary" target="_blank" rel="noopener">{{ page.link_detail_label }}</a>
+      {% endif %}
+      {% if page.link_source_label and page.link_source_url %}
+        <a href="{{ page.link_source_url }}" class="btn btn--secondary" target="_blank" rel="noopener">{{ page.link_source_label }}</a>
+      {% endif %}
+      {% if page.link_extra_label and page.link_extra_url %}
+        <a href="{{ page.link_extra_url }}" class="btn btn--secondary" target="_blank" rel="noopener">{{ page.link_extra_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% if page.stats %}
+<section class="project-stats">
+  <div class="container">
+    {% for stat in page.stats %}
+    <div class="project-stat">
+      <div class="project-stat__value">{{ stat.value }}</div>
+      <div class="project-stat__label">{{ stat.label }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section>
+  <div class="container">
+    <article class="project-content">
+      {{ content }}
+    </article>
+  </div>
+</section>

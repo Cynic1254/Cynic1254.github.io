@@ -1,0 +1,38 @@
+title: "Lasse Broekstra"
+tagline: "Tools & DevOps developer"
+description: "Game programming student at BUAS specialising in CI/CD pipelines, developer tools, and engine systems."
+url: "https://cynic1254.github.io"
+
+# Social links — leave blank to hide
+email: "contact@cynic1254.com"
+github: "Cynic1254"
+resume: "https://rxresu.me/lassewolv/general-resume"
+
+# About blurb — shown on the index page, 2-3 sentences, your own voice
+about: >
+  I'm Lasse, a game programming student at Breda University of Applied Sciences (BUAS). I specialize in the infrastructure side of game development like build systems, CI/CD pipelines, and the tooling that keeps teams shipping. I enjoy working with low level systems whether that is external APIs, engine internals or automating parts of the build process.
+
+# Skills shown as tags below the about paragraph.
+# Edit this list freely — order determines display order.
+skills:
+  - C++
+  - Unreal Engine
+  - Jenkins CI/CD
+  - Steam API
+  - Docker
+  - Git / Perforce
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+plugins:
+  - jekyll-feed
